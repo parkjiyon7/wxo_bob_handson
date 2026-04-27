@@ -26,3 +26,48 @@ Python을 설치한 후 Python의 패키지 설치 프로그램인 pip도 설치
 ```bash
 pip --version
 ```
+
+
+## Python 가상 환경 생성
+
+ADK를 설치하기 전에 Python 가상 환경을 생성하는 것이 좋습니다. 이렇게 하면 에이전트 종속성을 격리하여 쉽게 관리할 수 있습니다.
+
+프로젝트 폴더에서 다음 명령을 사용하여 가상 환경을 생성하세요:
+
+```bash
+python -m venv venv
+```
+
+다음으로 가상 환경을 활성화합니다.
+
+**macOS/Linux:**
+
+```bash
+source venv/bin/activate
+```
+
+**Windows:**
+
+```bash
+venv\Scripts\activate
+```
+
+
+## ADK 설치
+
+가상 환경이 활성화된 상태에서 ADK를 설치합니다:
+
+```bash
+pip install ibm-watsonx-orchestrate
+```
+
+설치 프로세스가 완료되면 다음 명령으로 인스턴스가 제대로 작동하는지 확인하세요:
+
+```bash
+orchestrate --help
+```
+
+
+설치가 성공적으로 완료되면 다음과 같은 화면을 볼 수 있습니다:
+
+![ADK 설치 확인](image/ADK_install_check.png)
