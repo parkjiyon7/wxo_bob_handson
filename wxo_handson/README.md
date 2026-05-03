@@ -85,3 +85,10 @@ orchestrate --help
 
 
 ![SaaS Settings](image/SaaS_Settings.png)
+
+
+4. Settings 페이지에서 **API details** 탭으로 이동합니다.
+5. **Service instance URL**을 복사합니다.
+6. **Generate API key** 버튼을 클릭합니다.
+
+![Settings API details](image/Settings_API_details.png)
