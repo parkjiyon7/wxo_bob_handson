@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1: Bob 기본 작업 - IBM Bob Hands-on</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">🤖 IBM AI Hands-on</a></h1>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">홈</a>
+                    <a href="index.html#bob" class="nav-link">Bob Labs</a>
+                    <a href="index.html#wxo" class="nav-link">watsonx Orchestrate</a>
+                    <a href="https://github.com/parkjiyon7/wxo_bob_handson" target="_blank" class="nav-link">GitHub</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="lab-content" id="markdown-content">
+                <!-- Markdown content will be loaded here -->
+                <p>콘텐츠를 로딩 중입니다...</p>
+            </div>
+            
+            <div class="navigation-buttons" style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                <a href="index.html" class="btn btn-secondary">← 홈으로</a>
+                <a href="bob-lab2-ko.html" class="btn btn-primary">Lab 2로 →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 IBM. All rights reserved.</p>
+            <p>Created for hands-on training purposes</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Fetch and render markdown content
+        fetch('../bob_handson/labs/lab1_basic_operations_ko.md')
+            .then(response => response.text())
+            .then(text => {
+                // Configure marked options
+                marked.setOptions({
+                    breaks: true,
+                    gfm: true,
+                    headerIds: true,
+                    mangle: false
+                });
+                
+                // Convert markdown to HTML
+                const html = marked.parse(text);
+                document.getElementById('markdown-content').innerHTML = html;
+                
+                // Add syntax highlighting class to code blocks
+                document.querySelectorAll('pre code').forEach((block) => {
+                    block.classList.add('language-plaintext');
+                });
+            })
+            .catch(error => {
+                console.error('Error loading markdown:', error);
+                document.getElementById('markdown-content').innerHTML = 
+                    '<p style="color: red;">콘텐츠를 로드하는 중 오류가 발생했습니다.</p>';
+            });
+    </script>
+</body>
+</html>

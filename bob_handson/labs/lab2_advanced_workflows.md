@@ -1,447 +1,440 @@
-# Lab 2: 고급 Bob 워크플로우
+# Lab 2: Advanced Bob Workflows
 
-> **원본 출처**: [Lab 2: Advanced Bob Workflows](https://github.ibm.com/WW-CE/bob_bootcamp_builder/blob/main/labs/lab2-advanced-workflows/instructions.md)
+**Duration:** 30 minutes  
+**Difficulty:** Intermediate  
+**Prerequisites:** Completed Lab 1, comfortable with basic Bob operations
 
-**소요 시간**: 30분  
-**난이도**: 중급  
-**사전 요구사항**: Lab 1 완료, 기본 Bob 작업에 익숙함
+## 🎯 Objectives
 
-## 🎯 목표
-이 실습을 마치면 다음을 수행할 수 있습니다:
+By the end of this lab, you will be able to:
+- Execute complex, multi-step workflows
+- Perform code refactoring across multiple files
+- Debug and troubleshoot issues effectively
+- Use advanced editing techniques
+- Manage complex tasks with todo lists
 
-- 복잡한 다단계 워크플로우 실행
-- 여러 파일에 걸친 코드 리팩토링 수행
-- 효과적으로 디버그 및 문제 해결
-- 고급 편집 기술 사용
-- todo 리스트로 복잡한 작업 관리
+## 📋 Setup
 
-## 📋 설정
-시작하기 전에 다음을 확인하세요:
+Before starting, ensure you have:
+- [ ] Completed Lab 1
+- [ ] Bob running in your IDE
+- [ ] Access to the sample project with multiple files
+- [ ] Understanding of basic Bob tools
 
-- ✅ Lab 1 완료
-- ✅ IDE에서 Bob 실행 중
-- ✅ 여러 파일이 있는 샘플 프로젝트 접근 권한
-- ✅ 기본 Bob 도구에 대한 이해
+## 🔨 Exercises
 
-## 🔨 실습
+### Exercise 1: Multi-File Refactoring (10 minutes)
 
-### Exercise 1: 다중 파일 리팩토링 (10분)
-**시나리오**: 여러 파일에서 사용되는 함수의 이름을 변경하고 모든 참조를 업데이트해야 합니다.
+**Scenario:** You need to rename a function that's used across multiple files and update all references.
 
-**작업**:
-1. `getUserData` 함수를 사용하는 모든 파일 찾기
-2. 메인 파일에서 함수 이름을 `fetchUserProfile`로 변경
-3. 모든 import 문과 함수 호출 업데이트
-4. 테스트로 변경 사항 확인
+**Tasks:**
+1. Find all files that use the function `getUserData`
+2. Rename the function to `fetchUserProfile` in the main file
+3. Update all import statements and function calls
+4. Verify the changes with tests
 
-**사용할 Bob 도구**:
-- `search_files` - 모든 사용처 찾기
-- `read_file` - 여러 파일을 한 번에 검토
-- `apply_diff` - 각 파일에서 정확한 변경
-- `execute_command` - 테스트 실행
+**Bob Tools to Use:**
+- `search_files` - Find all usages
+- `read_file` - Review multiple files at once
+- `apply_diff` - Make precise changes in each file
+- `execute_command` - Run tests
 
-**예시 프롬프트**:
+**Example Prompt:**
 ```
-getUserData 함수를 fetchUserProfile로 리팩토링해야 합니다. 먼저 getUserData를 사용하는 모든 파일을 검색하세요. 그런 다음 해당 파일들을 읽고, 함수 정의와 모든 호출을 업데이트하고, 테스트를 실행하여 모든 것이 여전히 작동하는지 확인하세요.
+I need to refactor the getUserData function to fetchUserProfile. First, search for all files that use getUserData. Then read those files, update the function definition and all calls to it, and run the tests to verify everything still works.
 ```
 
-**예상 결과**:
-- ✅ 정의 파일에서 함수 이름 변경됨
-- ✅ 코드베이스 전체의 모든 참조 업데이트됨
-- ✅ 테스트가 성공적으로 통과함
-- ✅ 손상된 import나 호출이 없음
+**Expected Outcome:**
+- Function renamed in definition file
+- All references updated across the codebase
+- Tests pass successfully
+- No broken imports or calls
 
-**핵심 학습**:
-- 여러 파일에 걸친 변경 사항을 조정하는 방법
-- 수정하기 전에 검색하는 것의 중요성
-- 테스트로 변경 사항 확인
+**Key Learning:**
+- How to coordinate changes across multiple files
+- Importance of searching before modifying
+- Verifying changes with tests
 
 ---
 
-### Exercise 2: 기능 구현 (10분)
-**시나리오**: 여러 파일(모델, 컨트롤러, 테스트)에 변경이 필요한 새 기능을 추가합니다.
+### Exercise 2: Feature Implementation (10 minutes)
 
-**작업**:
-1. 데이터 모델에 새 필드 추가
-2. 새 필드를 처리하도록 컨트롤러 업데이트
-3. 새 기능에 대한 테스트 생성
-4. 문서 업데이트
+**Scenario:** Add a new feature that requires changes to multiple files: model, controller, and tests.
 
-**사용할 Bob 도구**:
-- `list_code_definition_names` - 기존 구조 이해
-- `read_file` - 관련 파일을 함께 검토
-- `apply_diff` - 대상 변경
-- `insert_content` - 새 테스트 케이스 추가
-- `update_todo_list` - 진행 상황 추적
+**Tasks:**
+1. Add a new field to a data model
+2. Update the controller to handle the new field
+3. Create tests for the new functionality
+4. Update documentation
 
-**예시 프롬프트**:
+**Bob Tools to Use:**
+- `list_code_definition_names` - Understand existing structure
+- `read_file` - Review related files together
+- `apply_diff` - Make targeted changes
+- `insert_content` - Add new test cases
+- `update_todo_list` - Track progress
+
+**Example Prompt:**
 ```
-User 모델에 "email" 필드를 추가해야 합니다. 다음을 수행하세요:
-1. models/user.py의 User 클래스 업데이트
-2. 이메일을 검증하고 저장하도록 UserController 수정
-3. 이메일 검증을 위한 테스트 추가
-4. API 문서 업데이트
+I need to add an "email" field to the User model. Please:
+1. Update the User class in models/user.py
+2. Modify the UserController to validate and save email
+3. Add tests for email validation
+4. Update the API documentation
 
-이 작업을 추적하기 위한 todo 리스트를 만드세요.
+Create a todo list to track this work.
 ```
 
-**예상 결과**:
-- ✅ 새 필드로 모델 업데이트됨
-- ✅ 컨트롤러가 필드를 올바르게 처리함
-- ✅ 테스트가 새 기능을 커버함
-- ✅ 문서가 변경 사항을 반영함
-- ✅ Todo 리스트가 완료된 단계를 보여줌
+**Expected Outcome:**
+- Model updated with new field
+- Controller handles the field correctly
+- Tests cover the new functionality
+- Documentation reflects changes
+- Todo list shows completed steps
 
-**핵심 학습**:
-- 복잡한 기능을 단계로 분해
-- 작업 관리를 위한 todo 리스트 사용
-- 관련 변경 사항 조정
-- 테스트 및 문서의 중요성
+**Key Learning:**
+- Breaking down complex features into steps
+- Using todo lists for task management
+- Coordinating related changes
+- Importance of tests and documentation
 
 ---
 
-### Exercise 3: 디버깅 및 문제 해결 (5분)
-**시나리오**: 테스트가 실패하고 있으며 문제를 식별하고 수정해야 합니다.
+### Exercise 3: Debugging and Troubleshooting (5 minutes)
 
-**작업**:
-1. 실패하는 테스트 스위트 실행
-2. 오류 메시지 분석
-3. 문제가 있는 코드 찾기
-4. 문제 수정
-5. 수정 사항 확인
+**Scenario:** Tests are failing and you need to identify and fix the issue.
 
-**사용할 Bob 도구**:
-- `execute_command` - 테스트 실행
-- `search_files` - 관련 코드 찾기
-- `read_file` - 문제 영역 검사
-- `apply_diff` - 문제 수정
+**Tasks:**
+1. Run the failing test suite
+2. Analyze the error messages
+3. Locate the problematic code
+4. Fix the issue
+5. Verify the fix
 
-**예시 프롬프트**:
+**Bob Tools to Use:**
+- `execute_command` - Run tests
+- `search_files` - Find related code
+- `read_file` - Examine the problematic area
+- `apply_diff` - Fix the issue
+
+**Example Prompt:**
 ```
-테스트 스위트를 실행하고 실패를 디버그하는 것을 도와주세요. 오류 메시지를 분석하고, 문제가 있는 코드를 찾고, 무엇이 잘못되었는지 설명하고, 수정하세요.
+Run the test suite and help me debug any failures. Analyze the error messages, find the problematic code, explain what's wrong, and fix it.
 ```
 
-**예상 결과**:
-- ✅ 테스트 실행 및 실패 식별됨
-- ✅ 근본 원인 이해됨
-- ✅ 문제가 올바르게 수정됨
-- ✅ 모든 테스트 통과
+**Expected Outcome:**
+- Tests run and failures identified
+- Root cause understood
+- Issue fixed correctly
+- All tests passing
 
-**핵심 학습**:
-- 체계적인 디버깅 접근 방식
-- 오류 메시지 읽기 및 해석
-- Bob을 사용하여 문제 추적
-- 수정 사항 확인
+**Key Learning:**
+- Systematic debugging approach
+- Reading and interpreting error messages
+- Using Bob to trace issues
+- Verifying fixes
 
 ---
 
-### Exercise 4: 코드 품질 개선 (5분)
-**시나리오**: 가독성, 성능 또는 유지보수성을 개선하기 위해 코드를 리팩토링합니다.
+### Exercise 4: Code Quality Improvement (5 minutes)
 
-**작업**:
-1. 개선이 필요한 코드 식별
-2. 더 나은 품질을 위해 리팩토링
-3. 기능이 동일하게 유지되는지 확인
-4. 주석 또는 문서 추가
+**Scenario:** Refactor code to improve readability, performance, or maintainability.
 
-**사용할 Bob 도구**:
-- `read_file` - 현재 코드 분석
-- `apply_diff` - 개선 사항 적용
-- `execute_command` - 테스트를 실행하여 확인
+**Tasks:**
+1. Identify code that needs improvement
+2. Refactor for better quality
+3. Ensure functionality remains the same
+4. Add comments or documentation
 
-**예시 프롬프트**:
+**Bob Tools to Use:**
+- `read_file` - Analyze current code
+- `apply_diff` - Make improvements
+- `execute_command` - Run tests to verify
+
+**Example Prompt:**
 ```
-utils/analytics.py의 calculate_statistics 함수를 검토하세요. 더 읽기 쉽고 효율적이도록 리팩토링하세요. docstring과 주석을 추가하세요. 모든 테스트가 여전히 통과하는지 확인하세요.
+Review the calculate_statistics function in utils/analytics.py. Refactor it to be more readable and efficient. Add docstrings and comments. Make sure all tests still pass.
 ```
 
-**예상 결과**:
-- ✅ 코드가 더 읽기 쉬워짐
-- ✅ 성능 개선됨 (해당되는 경우)
-- ✅ 더 나은 문서
-- ✅ 테스트가 여전히 통과함
-- ✅ 기능이 손상되지 않음
+**Expected Outcome:**
+- Code is more readable
+- Performance improved (if applicable)
+- Better documentation
+- Tests still pass
+- No functionality broken
 
-**핵심 학습**:
-- 기능을 손상시키지 않고 리팩토링
-- 가독성과 성능의 균형
-- 리팩토링 중 테스트의 중요성
-- 유용한 문서 추가
+**Key Learning:**
+- Refactoring without breaking functionality
+- Balancing readability and performance
+- Importance of tests during refactoring
+- Adding helpful documentation
 
 ---
 
-## 🎓 고급 기술
+## 🎓 Advanced Techniques
 
-### 1. 복잡한 워크플로우에서 Bob 모드 활용
-작업이 더 복잡해질수록 올바른 모드를 사용하는 것이 더욱 중요해집니다:
+### 1. Leveraging Bob Modes in Complex Workflows
 
-**전략적 모드 전환**:
+As tasks get more complex, using the right mode becomes even more important:
 
+**Strategic Mode Switching:**
 ```
-[Ask 모드] - 문제 이해
-"현재 인증 아키텍처를 설명하고 잠재적인 문제를 식별하세요"
+[Ask Mode] - Understand the problem
+"Explain the current authentication architecture and identify potential issues"
 
-[Plan 모드] - 솔루션 분해
-"세션 기반에서 JWT 인증으로 마이그레이션하기 위한 상세한 계획을 만드세요"
+[Plan Mode] - Break down the solution
+"Create a detailed plan to migrate from session-based to JWT authentication"
 
-[Code 모드] - 단계별 구현
-"1단계 구현: JWT 라이브러리 및 구성 추가"
-```
-
-**이것이 중요한 이유**:
-- Ask 모드는 변경하지 않고 깊은 이해를 제공
-- Plan 모드는 코딩하기 전에 복잡한 변경 사항을 생각하는 데 도움
-- Code 모드는 전체 컨텍스트로 구현에 집중
-
-**프로 팁**: Plan 모드를 사용하여 todo 리스트를 만든 다음 Code 모드에서 작업하세요.
-
----
-
-### 2. 리팩토링에서 Bob Findings 사용
-리팩토링하기 전에 Bob에게 코드를 분석하도록 요청하세요:
-
-```
-"이 모듈을 보안 문제, 코드 품질 문제 및 리팩토링 기회에 대해 분석하세요. 심각도별로 우선순위를 지정하세요."
+[Code Mode] - Implement step by step
+"Implement step 1: Add JWT library and configuration"
 ```
 
-**Bob Findings가 식별할 것**:
-- 먼저 수정할 보안 취약점
-- 해결할 코드 스멜
-- 성능 병목 현상
-- 유지보수성 문제
+**Why This Matters:**
+- Ask Mode gives you deep understanding without making changes
+- Plan Mode helps you think through complex changes before coding
+- Code Mode focuses on implementation with full context
 
-그런 다음 자신감을 가지고 리팩토링하세요:
+**Pro Tip:** Use Plan mode to create a todo list, then work through it in Code mode.
 
-```
-"식별한 높은 우선순위 발견 사항을 해결하여 이 모듈을 리팩토링하세요. 보안 문제부터 시작하세요."
-```
+### 2. Using Bob Findings in Refactoring
 
----
-
-### 3. 여러 파일을 효율적으로 읽기
-관련 파일을 작업할 때 함께 읽으세요:
+Before refactoring, ask Bob to analyze the code:
 
 ```
-다음 파일들을 함께 읽으세요:
+"Analyze this module for security issues, code quality problems, and refactoring opportunities. Prioritize by severity."
+```
+
+**Bob Findings Will Identify:**
+- Security vulnerabilities to fix first
+- Code smells to address
+- Performance bottlenecks
+- Maintainability issues
+
+**Then refactor with confidence:**
+```
+"Refactor this module addressing the high-priority findings you identified, starting with security issues."
+```
+
+### 3. Reading Multiple Files Efficiently
+
+When working with related files, read them together:
+
+```
+Read these files together:
 - src/models/user.py
 - src/controllers/user_controller.py
 - tests/test_user.py
 
-사용자 인증이 어떻게 작동하는지 이해해야 합니다.
+I need to understand how user authentication works.
 ```
 
-**이점**:
-- Bob이 전체 컨텍스트를 얻음
-- 관계에 대한 더 나은 이해
-- 더 정확한 제안
+**Benefits:**
+- Bob gets full context
+- Better understanding of relationships
+- More accurate suggestions
 
----
+### 2. Using Line Ranges for Large Files
 
-### 4. 대용량 파일에 대한 라인 범위 사용
-대용량 파일의 경우 특정 섹션을 읽으세요:
-
-```
-src/app.py의 1-50줄과 200-250줄을 읽어 초기화 및 메인 함수를 확인하세요.
-```
-
-**이점**:
-- 더 빠른 읽기
-- 관련 코드에 집중
-- 토큰 사용량 감소
-
----
-
-### 5. 복잡한 apply_diff 작업
-한 번의 요청으로 여러 변경:
+For large files, read specific sections:
 
 ```
-src/utils.py에서 다음 변경을 수행하세요:
-1. 세금을 추가하도록 calculate_total 함수 업데이트
-2. 새로운 format_currency 헬퍼 함수 추가
-3. 45줄의 주석에서 오타 수정
+Read src/app.py lines 1-50 and 200-250 to see the initialization and main function.
 ```
 
-**이점**:
-- 원자적 변경
-- 더 적은 왕복
-- 더 나은 컨텍스트 보존
+**Benefits:**
+- Faster reading
+- Focus on relevant code
+- Reduced token usage
 
----
+### 3. Complex apply_diff Operations
 
-### 6. 복잡한 작업에 Todo 리스트 사용
-대규모 작업을 분해하세요:
+Make multiple changes in one request:
 
 ```
-사용자 인증 구현을 위한 todo 리스트를 만드세요:
-- [ ] 비밀번호 해싱이 있는 User 모델 추가
-- [ ] 로그인 엔드포인트 생성
-- [ ] JWT 토큰 생성 추가
-- [ ] 보호된 라우트를 위한 미들웨어 구현
-- [ ] 인증 플로우에 대한 테스트 추가
+In src/utils.py, make these changes:
+1. Update the calculate_total function to add tax
+2. Add a new format_currency helper function
+3. Fix the typo in the comment on line 45
 ```
 
-**이점**:
-- 명확한 진행 상황 추적
-- 체계적인 접근 방식
-- 중단되어도 쉽게 재개
+**Benefits:**
+- Atomic changes
+- Fewer round trips
+- Better context preservation
+
+### 4. Using Todo Lists for Complex Tasks
+
+Break down large tasks:
+
+```
+Create a todo list for implementing user authentication:
+- [ ] Add User model with password hashing
+- [ ] Create login endpoint
+- [ ] Add JWT token generation
+- [ ] Implement middleware for protected routes
+- [ ] Add tests for auth flow
+```
+
+**Benefits:**
+- Clear progress tracking
+- Organized approach
+- Easy to resume if interrupted
 
 ---
 
-## 💡 모범 사례
+## 💡 Best Practices
 
-### 1. 실행하기 전에 계획
-- 수정하기 전에 검색하고 읽기
-- 전체 범위 이해
-- 영향을 받는 모든 파일 식별
+### 1. Plan Before Executing
+- Search and read before modifying
+- Understand the full scope
+- Identify all affected files
 
-### 2. 원자적 변경
-- 관련 변경 사항을 함께 그룹화
-- 변경 사항을 집중적으로 유지
-- 각 주요 변경 후 확인
+### 2. Make Atomic Changes
+- Group related changes together
+- Keep changes focused
+- Verify after each major change
 
-### 3. 지속적으로 테스트
-- 변경 후 테스트 실행
-- 문제를 즉시 수정
-- 기술 부채를 축적하지 않음
+### 3. Test Continuously
+- Run tests after changes
+- Fix issues immediately
+- Don't accumulate technical debt
 
-### 4. 컨텍스트 제공
-- 달성하려는 것을 설명
-- 제약 조건이나 요구 사항 언급
-- 관련 배경 정보 공유
+### 4. Provide Context
+- Explain what you're trying to achieve
+- Mention constraints or requirements
+- Share relevant background information
 
-### 5. 버전 관리 사용
-- 작동하는 변경 사항 커밋
-- 실험을 위한 브랜치 생성
-- 필요한 경우 쉽게 롤백
-
----
-
-## 🐛 일반적인 문제
-
-**문제**: 변경 사항이 서로 충돌함  
-**해결책**: 논리적 순서로 변경하고, 점진적으로 테스트
-
-**문제**: 해야 할 일을 추적하지 못함  
-**해결책**: `update_todo_list`를 사용하여 진행 상황 추적
-
-**문제**: 리팩토링 후 테스트 실패  
-**해결책**: 더 작은 변경을 하고, 더 자주 테스트
-
-**문제**: 변경의 영향에 대해 확신이 없음  
-**해결책**: 먼저 모든 사용처를 검색하고, 관련 코드 읽기
-
-**문제**: 복잡한 변경이 압도적으로 느껴짐  
-**해결책**: 더 작은 단계로 나누고, 한 번에 하나씩 처리
+### 5. Use Version Control
+- Commit working changes
+- Create branches for experiments
+- Easy rollback if needed
 
 ---
 
-## 📝 토론 질문
+## 🐛 Common Challenges
 
-1. 한 번의 요청과 여러 요청으로 변경할 시기를 어떻게 결정하나요?
-2. 기능을 손상시키지 않고 코드를 리팩토링하는 전략은 무엇인가요?
-3. Todo 리스트가 복잡한 워크플로우를 관리하는 데 어떻게 도움이 되나요?
-4. 다중 파일 변경이 올바르게 작동하는지 확인하는 가장 좋은 방법은 무엇인가요?
-5. 변경할 때 속도와 철저함의 균형을 어떻게 맞추나요?
+### Challenge: Changes conflict with each other
+**Solution:** Make changes in logical order, test incrementally
 
----
+### Challenge: Lost track of what needs to be done
+**Solution:** Use `update_todo_list` to track progress
 
-## ✅ 완료 체크리스트
+### Challenge: Tests failing after refactoring
+**Solution:** Make smaller changes, test more frequently
 
-- [ ] Exercise 1 완료: 다중 파일 리팩토링
-- [ ] Exercise 2 완료: 기능 구현
-- [ ] Exercise 3 완료: 디버깅 및 문제 해결
-- [ ] Exercise 4 완료: 코드 품질 개선
-- [ ] 다중 파일 변경을 조정하는 방법 이해
-- [ ] 복잡한 작업에 todo 리스트 사용 가능
-- [ ] 고급 편집 기술에 익숙함
-- [ ] Bob으로 효과적으로 디버그하는 방법 알기
+### Challenge: Unsure about the impact of changes
+**Solution:** Search for all usages first, read related code
+
+### Challenge: Complex changes feel overwhelming
+**Solution:** Break into smaller steps, tackle one at a time
 
 ---
 
-## 🚀 다음 단계
+## 📝 Discussion Questions
 
-이 실습을 완료한 후:
-
-1. `solution/` 디렉토리의 솔루션 검토
-2. 이러한 기술을 자신의 코드에 적용해 보기
-3. Lab 3: 클라이언트별 구현으로 이동
-4. 더 복잡한 시나리오로 실험
-
----
-
-## 📚 추가 리소스
-
-- **Bob 차별화 요소**: `resources/bob-differentiators.md` 참조 - Bob을 독특하게 만드는 것 알아보기
-- **고급 Bob 패턴**: [문서 링크]
-- **리팩토링 가이드**: `resources/cheat-sheet.md` 참조
-- **디버깅 팁**: `resources/troubleshooting.md` 참조
+1. How do you decide when to make changes in one request vs. multiple requests?
+2. What's your strategy for refactoring code without breaking functionality?
+3. How can todo lists help manage complex workflows?
+4. What's the best way to verify that multi-file changes work correctly?
+5. How do you balance speed with thoroughness when making changes?
 
 ---
 
-## 🌟 Bob의 고급 기능 활용
+## ✅ Completion Checklist
 
-고급 워크플로우를 진행하면서 Bob의 차별화 요소를 기억하세요:
-
-- **자동 모델 선택** - Bob은 각 작업에 적합한 모델을 사용합니다 (간단한 작업에는 더 빠른 응답, 복잡한 작업에는 더 깊은 분석)
-- **Bob Findings** - Bob에게 보안 및 품질 문제에 대해 사전에 코드를 분석하도록 요청
-- **MCP 통합** - 내부 도구 및 문서에 연결
-- **컨텍스트 최적화** - Bob은 대규모 코드베이스를 효율적으로 관리
-
-`resources/bob-differentiators.md`에서 자세히 알아보세요
-
-**도움이 필요하신가요?** 진행자에게 문의하거나 전용 지원 채널을 사용하세요!
-
-**프로 팁**: 고급 워크플로우를 배우는 가장 좋은 방법은 실제 코드로 연습하는 것입니다. 실험하는 것을 두려워하지 마세요!
+- [ ] Completed Exercise 1: Multi-File Refactoring
+- [ ] Completed Exercise 2: Feature Implementation
+- [ ] Completed Exercise 3: Debugging and Troubleshooting
+- [ ] Completed Exercise 4: Code Quality Improvement
+- [ ] Understand how to coordinate multi-file changes
+- [ ] Can use todo lists for complex tasks
+- [ ] Comfortable with advanced editing techniques
+- [ ] Know how to debug effectively with Bob
 
 ---
 
-## 💰 비즈니스 영향
+## 🚀 Next Steps
 
-이 실습은 복잡한 개발 작업을 위한 Bob의 고급 기능을 보여줍니다:
-
-### ⏱️ 생산성 향상
-- **다중 파일 리팩토링**: 파일 전체에서 수동 찾기 및 바꾸기보다 80% 빠름
-- **복잡한 디버깅**: 지능형 분석으로 디버깅 시간 60% 감소
-- **코드 생성**: 보일러플레이트 코드를 수동으로 작성하는 것보다 70% 빠름
-- **워크플로우 자동화**: 주당 반복 작업 3-4시간 제거
-
-### 🐛 품질 개선
-- **리팩토링 안전성**: 대규모 코드 변경으로 인한 오류 95% 감소
-- **테스트 커버리지**: 자동화된 테스트 생성으로 커버리지 40% 증가
-- **코드 일관성**: 전체 코드베이스에서 균일한 패턴 보장
-- **문서**: 자동 생성된 문서가 90% 완전하고 정확함
-
-### 🔒 보안 강화
-- **종속성 업데이트**: 호환성 검사로 취약한 패키지를 안전하게 업데이트
-- **보안 패턴 구현**: 보안 모범 사례를 일관되게 적용
-- **코드 검토 자동화**: 사람 검토 전에 보안 문제의 80% 포착
-
-### 💼 효율성 영향
-- **리팩토링 시간 단축**: 주요 리팩토링 프로젝트당 6-8시간 절약
-- **더 빠른 기능 개발**: 복잡한 기능에 대한 시간 50% 감소
-- **낮은 기술 부채**: 코드 품질 문제의 축적 방지
-
-**개발자당 주간 예상 가치**: 생산성 향상으로 6-8시간 절약
+Once you've completed this lab:
+1. Review the solutions in the `solution/` directory
+2. Try applying these techniques to your own code
+3. Move on to Lab 3: Client-Specific Implementation
+4. Experiment with more complex scenarios
 
 ---
 
-## 🌟 고급 워크플로우의 Bob 차별화 요소
+## 📚 Additional Resources
 
-이 실습은 Bob의 엔터프라이즈급 기능을 보여주었습니다:
+- **Bob Differentiators**: See `resources/bob-differentiators.md` - Learn what makes Bob unique
+- **Advanced Bob Patterns**: [Link to docs]
+- **Refactoring Guide**: See `resources/cheat-sheet.md`
+- **Debugging Tips**: See `resources/troubleshooting.md`
 
-### 1. 지능형 모델 선택
-Bob은 각 작업에 적합한 AI 모델을 자동으로 선택했습니다—간단한 편집에는 더 빠른 모델, 복잡한 리팩토링에는 더 강력한 모델. 이를 구성할 필요가 없었습니다. Bob이 백그라운드에서 최적화했습니다.
+### 🌟 Leverage Bob's Advanced Capabilities
 
-### 2. 컨텍스트 최적화
-여러 파일을 읽을 때 Bob은 토큰 제한에 도달하지 않고 관계를 이해하기 위해 컨텍스트를 효율적으로 관리했습니다. 이를 통해 다른 AI 도구를 압도할 수 있는 대규모 코드베이스 작업이 가능합니다.
+As you work through advanced workflows, remember Bob's differentiators:
+- **Automatic Model Selection** - Bob uses the right model for each task (you'll notice faster responses for simple tasks, deeper analysis for complex ones)
+- **Bob Findings** - Ask Bob to analyze code for security and quality issues proactively
+- **MCP Integrations** - Connect to your internal tools and documentation
+- **Context Optimization** - Bob efficiently manages large codebases
 
-### 3. 원자적 다중 파일 작업
-Bob은 단일 작업에서 여러 파일에 걸친 변경 사항을 조정하여 일관성을 보장했습니다. 다른 도구는 수동 조정이 필요하거나 일관되지 않은 상태의 위험이 있습니다.
+Learn more in `resources/bob-differentiators.md`
 
-### 4. 확장 가능한 아키텍처 (MCP)
-이 실습에서는 사용되지 않았지만 Bob의 Model Context Protocol (MCP) 통합을 통해 내부 도구, 데이터베이스 및 문서에 연결할 수 있어 Bob이 전체 개발 생태계를 인식하게 됩니다.
+---
 
-### 5. 엔터프라이즈 현대화 초점
-Bob은 Java 및 레거시 코드 변환에 탁월하며 엔터프라이즈 애플리케이션 현대화를 위한 전문 기능을 갖추고 있습니다. 이는 대규모 기존 코드베이스를 가진 조직에 대해 Bob을 차별화합니다.
+**Need Help?** Ask your facilitator or use the dedicated support channel!
 
-### 6. 사전 품질 분석
-Bob Findings는 지속적으로 실행되어 요청하기 전에 문제를 식별합니다. 이러한 사전 접근 방식은 문제를 조기에 포착하여 기술 부채와 보안 취약점을 줄입니다.
+**Pro Tip:** The best way to learn advanced workflows is to practice with real code. Don't be afraid to experiment!
+## 💰 Business Impact
+
+This lab demonstrates Bob's advanced capabilities for complex development tasks:
+
+### ⏱️ Productivity Gains
+- **Multi-File Refactoring**: 80% faster than manual find-and-replace across files
+- **Complex Debugging**: Reduces debugging time by 60% with intelligent analysis
+- **Code Generation**: 70% faster than writing boilerplate code manually
+- **Workflow Automation**: Eliminates 3-4 hours of repetitive tasks per week
+
+### 🐛 Quality Improvements
+- **Refactoring Safety**: 95% reduction in errors from large-scale code changes
+- **Test Coverage**: Automated test generation increases coverage by 40%
+- **Code Consistency**: Ensures uniform patterns across entire codebase
+- **Documentation**: Auto-generated docs are 90% complete and accurate
+
+### 🔒 Security Enhancements
+- **Dependency Updates**: Safely updates vulnerable packages with compatibility checks
+- **Security Pattern Implementation**: Applies security best practices consistently
+- **Code Review Automation**: Catches 80% of security issues before human review
+
+### 💼 Efficiency Impact
+- **Reduced Refactoring Time**: Saves 6-8 hours per major refactoring project
+- **Faster Feature Development**: 50% reduction in time for complex features
+- **Lower Technical Debt**: Prevents accumulation of code quality issues
+
+**Estimated Weekly Value per Developer**: 6-8 hours saved in productivity gains
+
+---
+
+## 🌟 Bob Differentiators in Advanced Workflows
+
+This lab showcased Bob's enterprise-grade capabilities:
+
+### 1. **Intelligent Model Selection**
+Bob automatically chose the right AI model for each task—faster models for simple edits, more powerful models for complex refactoring. You didn't need to configure this; Bob optimized behind the scenes.
+
+### 2. **Context Optimization**
+When reading multiple files, Bob efficiently managed context to understand relationships without hitting token limits. This enables working with large codebases that would overwhelm other AI tools.
+
+### 3. **Atomic Multi-File Operations**
+Bob coordinated changes across multiple files in a single operation, ensuring consistency. Other tools require manual coordination or risk inconsistent states.
+
+### 4. **Extensible Architecture (MCP)**
+While not used in this lab, Bob's Model Context Protocol (MCP) integration allows connection to internal tools, databases, and documentation—making Bob aware of your entire development ecosystem.
+
+### 5. **Enterprise Modernization Focus**
+Bob excels at Java and legacy code transformation, with specialized capabilities for modernizing enterprise applications. This differentiates Bob for organizations with large existing codebases.
+
+### 6. **Proactive Quality Analysis**
+Bob Findings runs continuously, identifying issues before you ask. This proactive approach catches problems early, reducing technical debt and security vulnerabilities.
+
+---

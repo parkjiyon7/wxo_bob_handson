@@ -1,0 +1,18 @@
+{
+  "app_name": "User Management System",
+  "version": "1.0.0",
+  "debug": false,
+  "database": {
+    "type": "sqlite",
+    "path": "users.db"
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "json"
+  },
+  "features": {
+    "email_validation": true,
+    "password_strength": true,
+    "rate_limiting": false
+  }
+}

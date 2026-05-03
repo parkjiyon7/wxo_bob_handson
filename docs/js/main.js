@@ -1,0 +1,155 @@
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Add active state to navigation links
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Add animation on scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe all cards
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.card, .resource-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        observer.observe(card);
+    });
+});
+
+// Copy code blocks to clipboard
+document.addEventListener('DOMContentLoaded', () => {
+    const codeBlocks = document.querySelectorAll('pre code');
+    codeBlocks.forEach(block => {
+        const button = document.createElement('button');
+        button.className = 'copy-button';
+        button.textContent = '복사';
+        button.addEventListener('click', () => {
+            navigator.clipboard.writeText(block.textContent).then(() => {
+                button.textContent = '복사됨!';
+                setTimeout(() => {
+                    button.textContent = '복사';
+                }, 2000);
+            });
+        });
+        block.parentElement.style.position = 'relative';
+        block.parentElement.appendChild(button);
+    });
+});
+
+// Back to top button
+const backToTopButton = document.createElement('button');
+backToTopButton.innerHTML = '↑';
+backToTopButton.className = 'back-to-top';
+backToTopButton.style.display = 'none';
+document.body.appendChild(backToTopButton);
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        backToTopButton.style.display = 'block';
+    } else {
+        backToTopButton.style.display = 'none';
+    }
+});
+
+backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Add styles for back to top button
+const style = document.createElement('style');
+style.textContent = `
+    .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: var(--shadow-lg);
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .back-to-top:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-5px);
+    }
+    
+    .copy-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.25rem 0.75rem;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: all 0.2s ease;
+    }
+    
+    .copy-button:hover {
+        background-color: var(--primary-dark);
+    }
+    
+    .nav-link.active {
+        background-color: var(--primary-color);
+        color: white;
+    }
+`;
+document.head.appendChild(style);
+
+// Made with Bob
