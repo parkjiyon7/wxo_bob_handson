@@ -92,3 +92,17 @@ orchestrate --help
 6. **Generate API key** 버튼을 클릭합니다.
 
 ![Settings API details](image/Settings_API_details.png)
+
+
+다음 화면에서 **Create**을 누르고 API key를 명명하고 **Create** 합니다.
+
+![Generate API key](image/GenerateAPIkey.png)
+
+![Name API key](image/NameAPIkey.png)
+
+
+7. 새로운 API Key가 포함된 팝업이 나타납니다. 즉시 복사하여 안전한 곳에 저장하세요 (예: .txt 파일). 나중에 다시 볼 수 없습니다.
+
+![Created API key](image/CreatedAPIkey.png)
+
+![Check API key creation](image/CheckAPIkey_creation.png)
