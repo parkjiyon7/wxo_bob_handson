@@ -19,7 +19,7 @@ By the end of this lab, you will be able to:
 
 Before starting, ensure you have:
 - [ ] Bob running in your IDE
-- [ ] Access to the sample project (provided by facilitator)
+- [ ] Access to the sample project → <a href="sample-project.zip" download class="download-btn">📦 Download Project</a>
 - [ ] Basic understanding of the programming language used
 
 ## 🔨 Exercises

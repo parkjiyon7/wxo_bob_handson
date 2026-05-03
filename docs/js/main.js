@@ -60,10 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Copy code blocks to clipboard
-document.addEventListener('DOMContentLoaded', () => {
+// Function to add copy buttons to code blocks
+function addCopyButtons() {
     const codeBlocks = document.querySelectorAll('pre code');
     codeBlocks.forEach(block => {
+        // Check if button already exists
+        if (block.parentElement.querySelector('.copy-button')) {
+            return;
+        }
+        
         const button = document.createElement('button');
         button.className = 'copy-button';
         button.textContent = '복사';
@@ -78,6 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
         block.parentElement.style.position = 'relative';
         block.parentElement.appendChild(button);
     });
+}
+
+// Copy code blocks to clipboard on page load
+document.addEventListener('DOMContentLoaded', () => {
+    addCopyButtons();
 });
 
 // Back to top button

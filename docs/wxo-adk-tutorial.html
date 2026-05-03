@@ -67,6 +67,11 @@
                 document.querySelectorAll('pre code').forEach((block) => {
                     block.classList.add('language-plaintext');
                 });
+                
+                // Add copy buttons to code blocks
+                if (typeof addCopyButtons === 'function') {
+                    addCopyButtons();
+                }
             })
             .catch(error => {
                 console.error('Error loading markdown:', error);
