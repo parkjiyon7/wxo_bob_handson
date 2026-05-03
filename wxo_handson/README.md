@@ -71,3 +71,17 @@ orchestrate --help
 설치가 성공적으로 완료되면 다음과 같은 화면을 볼 수 있습니다:
 
 ![ADK 설치 확인](image/ADK_install_check.png)
+
+
+## ADK를 SaaS 환경에 연결하고 환경 활성화
+
+이제 ADK를 설치했으므로 watsonx Orchestrate SaaS 인스턴스에 연결하여 에이전트를 SaaS 환경에 직접 배포할 수 있습니다.
+
+인스턴스의 API Key와 Instance URL이 필요합니다. 다음 단계를 따르세요:
+
+1. watsonx Orchestrate 인스턴스에 로그인합니다.
+2. 오른쪽 상단의 프로필 아이콘을 클릭합니다.
+3. 열리는 메뉴에서 **Settings**를 클릭합니다.
+
+
+![SaaS Settings](image/SaaS_Settings.png)
