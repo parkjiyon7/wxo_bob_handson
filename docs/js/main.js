@@ -102,7 +102,7 @@ backToTopButton.addEventListener('click', () => {
     });
 });
 
-// Add styles for back to top button
+// Add styles for back to top button and active nav
 const style = document.createElement('style');
 style.textContent = `
     .back-to-top {
@@ -125,24 +125,6 @@ style.textContent = `
     .back-to-top:hover {
         background-color: var(--primary-dark);
         transform: translateY(-5px);
-    }
-    
-    .copy-button {
-        position: absolute;
-        top: 0.5rem;
-        right: 0.5rem;
-        padding: 0.25rem 0.75rem;
-        background-color: var(--primary-color);
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.875rem;
-        transition: all 0.2s ease;
-    }
-    
-    .copy-button:hover {
-        background-color: var(--primary-dark);
     }
     
     .nav-link.active {
