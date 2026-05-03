@@ -44,7 +44,7 @@
 
     <script src="js/main.js"></script>
     <script>
-        fetch('../wxo_handson/getting-started-adk/wxO_ADK_tutorial.md')
+        fetch('content/wxo/wxO_ADK_tutorial.md')
             .then(response => response.text())
             .then(text => {
                 marked.setOptions({
@@ -60,7 +60,7 @@
                 document.querySelectorAll('img').forEach(img => {
                     const src = img.getAttribute('src');
                     if (src && !src.startsWith('http')) {
-                        img.setAttribute('src', '../wxo_handson/getting-started-adk/' + src);
+                        img.setAttribute('src', 'content/wxo/' + src);
                     }
                 });
                 
