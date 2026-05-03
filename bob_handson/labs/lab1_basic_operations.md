@@ -1,7 +1,6 @@
 # Lab 1: Basic Bob Operations
 
-**Duration:** 30 minutes
-**Difficulty:** Beginner
+
 **Prerequisites:** Bob installed and running
 
 ## 🎯 Objectives

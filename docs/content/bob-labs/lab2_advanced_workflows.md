@@ -1,6 +1,5 @@
 # Lab 2: Advanced Bob Workflows
 
-**Difficulty:** Intermediate  
 **Prerequisites:** Completed Lab 1, comfortable with basic Bob operations
 
 ## 🎯 Objectives

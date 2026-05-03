@@ -1,6 +1,5 @@
 # Lab 1: Basic Bob Operations
 
-**Difficulty:** Beginner
 **Prerequisites:** Bob installed and running
 
 ## 🎯 Objectives
