@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agentic Competitive Insights - IBM Hands-on</title>
+    <title>Agentic Competitive Insights - 실습 가이드 - IBM Hands-on</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
@@ -29,8 +29,8 @@
             </div>
             
             <div class="navigation-buttons" style="display: flex; justify-content: space-between; margin-top: 2rem;">
-                <a href="index.html" class="btn btn-secondary">← 홈으로</a>
-                <a href="https://www.ibm.com/products/watsonx-orchestrate" target="_blank" class="btn btn-primary">watsonx Orchestrate 더 알아보기 →</a>
+                <a href="wxo-competitive-insights.html" class="btn btn-secondary">← 개요로 돌아가기</a>
+                <a href="index.html" class="btn btn-primary">홈으로 →</a>
             </div>
         </div>
     </main>
@@ -44,7 +44,7 @@
 
     <script src="js/main.js"></script>
     <script>
-        fetch('content/wxo-labs/Agentic_Competitive_Insights.md')
+        fetch('content/wxo-labs/handson_guide.md')
             .then(response => response.text())
             .then(text => {
                 marked.setOptions({
@@ -61,14 +61,6 @@
                     const src = img.getAttribute('src');
                     if (src && !src.startsWith('http')) {
                         img.setAttribute('src', 'content/wxo-labs/' + src);
-                    }
-                });
-                
-                // Fix markdown links to handson_guide.md
-                document.querySelectorAll('a').forEach(link => {
-                    const href = link.getAttribute('href');
-                    if (href && href.includes('handson_guide.md')) {
-                        link.setAttribute('href', 'wxo-competitive-insights-guide.html');
                     }
                 });
                 
