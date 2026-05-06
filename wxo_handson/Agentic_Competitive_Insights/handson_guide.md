@@ -481,3 +481,5 @@ Give me a summary of how this product is perceived by customers
 6. 맨 아래로 스크롤하여 `</body>` 태그 바로 앞에 복사한 코드를 붙여넣습니다.
 
 7. 변경 사항을 저장하고 브라우저에서 `index.html` 파일을 엽니다. 다음과 같은 화면이 표시됩니다:
+
+   ![Hands-on Step 51](image/handson51.png)
