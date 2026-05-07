@@ -604,30 +604,12 @@ body {
 
 /* Today Info Card */
 .today-info-card {
-    background: transparent;
-    border: 3px solid transparent;
-    border-image: linear-gradient(135deg, #1cb0f6 0%, #58cc02 100%) 1;
+    background: white;
+    border: 2px solid #1cb0f6;
     padding: 2rem;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     margin-bottom: 2rem;
-    position: relative;
-}
-
-.today-info-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: var(--radius-lg);
-    padding: 3px;
-    background: linear-gradient(135deg, #1cb0f6 0%, #58cc02 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
 }
 
 .today-info-card h1,
