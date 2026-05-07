@@ -60,7 +60,7 @@ watsonx Orchestrate ADK 설치 및 첫 번째 에이전트 생성
   - MCP를 통한 모델 통신
   - RAG 기반 경쟁사 분석
   - 멀티 에이전트 오케스트레이션
-  - 자동화된 SWOT 분석
+
 
 ## 🌐 GitHub Pages 웹사이트
 
@@ -153,6 +153,3 @@ Created for hands-on training purposes.
 
 실습 중 문제가 발생하면 강사에게 문의하거나 Bob에게 도움을 요청하세요.
 
----
-
-**Made with ❤️ by IBM**
