@@ -217,16 +217,12 @@ body {
 .card-features {
     list-style: none;
     margin-bottom: var(--spacing-md);
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
 }
 
 .card-features li {
     padding: var(--spacing-xs) 0;
     color: var(--text-dark);
     font-size: 0.9375rem;
-    display: block;
 }
 
 .card-actions {
