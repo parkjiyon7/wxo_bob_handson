@@ -572,3 +572,78 @@ body {
         max-width: 70%;
     }
 }
+
+/* SaaS Notice */
+.saas-notice {
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #ff9600 0%, #ff4b4b 100%);
+    color: white;
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-md);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/* Today Info Card */
+.today-info-card {
+    background: linear-gradient(135deg, #1cb0f6 0%, #58cc02 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 2rem;
+}
+
+.today-info-card h1,
+.today-info-card h2,
+.today-info-card h3 {
+    color: white;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.today-info-card h1:first-child {
+    margin-top: 0;
+}
+
+.today-info-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.today-info-card li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.today-info-card li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.today-info-card strong {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.today-info-card code {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+}

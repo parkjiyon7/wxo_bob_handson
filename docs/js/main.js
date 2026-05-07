@@ -145,3 +145,34 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Made with Bob
+
+// Load Today's Info
+document.addEventListener('DOMContentLoaded', () => {
+    const todayInfoCard = document.getElementById('today-info-card');
+    if (todayInfoCard) {
+        fetch('../Today_info.md')
+            .then(response => response.text())
+            .then(text => {
+                // Use marked.js if available, otherwise simple conversion
+                if (typeof marked !== 'undefined') {
+                    todayInfoCard.innerHTML = marked.parse(text);
+                } else {
+                    // Simple markdown to HTML conversion
+                    todayInfoCard.innerHTML = text
+                        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+                        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+                        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+                        .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+                        .replace(/\*(.*)\*/gim, '<em>$1</em>')
+                        .replace(/`([^`]+)`/gim, '<code>$1</code>')
+                        .replace(/^\- (.*$)/gim, '<li>$1</li>')
+                        .replace(/\n\n/g, '</p><p>')
+                        .replace(/^(.+)$/gim, '<p>$1</p>');
+                }
+            })
+            .catch(error => {
+                console.log('Today info not found, hiding card');
+                todayInfoCard.style.display = 'none';
+            });
+    }
+});

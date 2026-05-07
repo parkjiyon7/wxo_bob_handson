@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitive Analysis Deploy - Bob Hands-on</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">🤖 IBM AI Hands-on</h1>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">홈</a>
+                    <a href="index.html#bob" class="nav-link">Bob</a>
+                    <a href="index.html#wxo" class="nav-link">watsonx Orchestrate</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">홈</a> / <a href="index.html#bob">Bob</a> / Competitive Analysis Deploy
+            </div>
+            
+            <div id="markdown-content" class="markdown-content">
+                <!-- Markdown content will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 IBM. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Fetch and render markdown
+        fetch('../bob_handson/competitve_Analysis_deploy/handson_lab.md')
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('markdown-content').innerHTML = marked.parse(text);
+                
+                // Fix image paths
+                const images = document.querySelectorAll('#markdown-content img');
+                images.forEach(img => {
+                    const src = img.getAttribute('src');
+                    if (src && !src.startsWith('http')) {
+                        // Convert relative paths to absolute paths from docs folder
+                        img.setAttribute('src', '../bob_handson/competitve_Analysis_deploy/' + src);
+                    }
+                });
+                
+                // Fix asset links
+                const links = document.querySelectorAll('#markdown-content a[href^="asset/"]');
+                links.forEach(link => {
+                    const href = link.getAttribute('href');
+                    link.setAttribute('href', '../bob_handson/competitve_Analysis_deploy/' + href);
+                });
+                
+                // Add copy buttons after markdown is rendered
+                setTimeout(() => {
+                    addCopyButtons();
+                }, 100);
+            })
+            .catch(error => {
+                console.error('Error loading markdown:', error);
+                document.getElementById('markdown-content').innerHTML =
+                    '<p>마크다운 파일을 불러오는 중 오류가 발생했습니다.</p>';
+            });
+    </script>
+</body>
+</html>
