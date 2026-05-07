@@ -40,8 +40,8 @@ watsonx Orchestrate의 로우코드 에이전트 빌더와 IBM Bob의 코드 생
 
 - 유스케이스의 Competitive Analysis 실습 완료
 - watsonx Orchestrate에 competitive analyst 에이전트가 배포되어 있는지 확인
-- IBM Bob IDE 설치. [여기](https://ibm.biz/bob-doc)에서 IBM Bob 얼리 액세스에 가입하세요.
+- IBM Bob IDE 설치. [여기](https://bob.ibm.com/trial)에서 IBM Bob Trial에 가입하세요.
 
 ## 📄 실습 가이드
 
-실습을 시작하려면 [여기](./handson_guide.md)의 상세 지침을 따르세요.
+실습을 시작하려면 [여기](./handson_lab.md)의 상세 지침을 따르세요.
