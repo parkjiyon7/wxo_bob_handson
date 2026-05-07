@@ -44,4 +44,4 @@ watsonx Orchestrate의 로우코드 에이전트 빌더와 IBM Bob의 코드 생
 
 ## 📄 실습 가이드
 
-실습을 시작하려면 [여기](../../../bob-competitive-deploy.html)의 상세 지침을 따르세요.
+실습을 시작하려면 [여기](https://parkjiyon7.github.io/wxo_bob_handson/bob-competitive-deploy-handson.html)의 상세 지침을 따르세요.
