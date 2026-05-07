@@ -27,8 +27,21 @@
                 <a href="index.html">홈</a> / <a href="index.html#bob">Bob</a> / Competitive Analysis Deploy
             </div>
             
-            <div id="markdown-content" class="markdown-content">
-                <!-- Markdown content will be loaded here -->
+            <div style="text-align: center; margin: 2rem 0; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button id="show-background-btn" class="btn btn-secondary" style="font-size: 1.1rem; padding: 0.875rem 1.75rem;">
+                    📖 배경 이해하기
+                </button>
+                <button id="show-handson-btn" class="btn btn-primary" style="font-size: 1.1rem; padding: 0.875rem 1.75rem;">
+                    🚀 단계별 실습하기
+                </button>
+            </div>
+            
+            <div id="background-content" class="markdown-content" style="display: none;">
+                <!-- Background content will be loaded here -->
+            </div>
+            
+            <div id="handson-content" class="markdown-content" style="display: none;">
+                <!-- Hands-on lab content will be loaded here -->
             </div>
         </div>
     </main>
@@ -41,39 +54,98 @@
 
     <script src="js/main.js"></script>
     <script>
-        // Fetch and render markdown
-        fetch('../bob_handson/competitve_Analysis_deploy/handson_lab.md')
-            .then(response => response.text())
-            .then(text => {
-                document.getElementById('markdown-content').innerHTML = marked.parse(text);
-                
-                // Fix image paths
-                const images = document.querySelectorAll('#markdown-content img');
-                images.forEach(img => {
-                    const src = img.getAttribute('src');
-                    if (src && !src.startsWith('http')) {
-                        // Convert relative paths to absolute paths from docs folder
-                        img.setAttribute('src', '../bob_handson/competitve_Analysis_deploy/' + src);
-                    }
-                });
-                
-                // Fix asset links
-                const links = document.querySelectorAll('#markdown-content a[href^="asset/"]');
-                links.forEach(link => {
-                    const href = link.getAttribute('href');
-                    link.setAttribute('href', '../bob_handson/competitve_Analysis_deploy/' + href);
-                });
-                
-                // Add copy buttons after markdown is rendered
-                setTimeout(() => {
-                    addCopyButtons();
-                }, 100);
-            })
-            .catch(error => {
-                console.error('Error loading markdown:', error);
-                document.getElementById('markdown-content').innerHTML =
-                    '<p>마크다운 파일을 불러오는 중 오류가 발생했습니다.</p>';
-            });
+        let backgroundLoaded = false;
+        let handsonLoaded = false;
+
+        // Show background button click handler
+        document.getElementById('show-background-btn').addEventListener('click', function() {
+            const backgroundContent = document.getElementById('background-content');
+            const handsonContent = document.getElementById('handson-content');
+            
+            // Hide handson content
+            handsonContent.style.display = 'none';
+            
+            // Load background content if not loaded yet
+            if (!backgroundLoaded) {
+                fetch('../bob_handson/competitve_Analysis_deploy/competitive_Analysis_deploy.md')
+                    .then(response => response.text())
+                    .then(text => {
+                        backgroundContent.innerHTML = marked.parse(text);
+                        
+                        // Fix image paths
+                        const images = backgroundContent.querySelectorAll('img');
+                        images.forEach(img => {
+                            const src = img.getAttribute('src');
+                            if (src && !src.startsWith('http')) {
+                                img.setAttribute('src', '../bob_handson/competitve_Analysis_deploy/' + src);
+                            }
+                        });
+                        
+                        backgroundLoaded = true;
+                        backgroundContent.style.display = 'block';
+                        backgroundContent.scrollIntoView({ behavior: 'smooth' });
+                    })
+                    .catch(error => {
+                        console.error('Error loading background:', error);
+                        backgroundContent.innerHTML = '<p>배경 정보를 불러오는 중 오류가 발생했습니다.</p>';
+                        backgroundContent.style.display = 'block';
+                    });
+            } else {
+                backgroundContent.style.display = 'block';
+                backgroundContent.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Show handson button click handler
+        document.getElementById('show-handson-btn').addEventListener('click', function() {
+            const backgroundContent = document.getElementById('background-content');
+            const handsonContent = document.getElementById('handson-content');
+            
+            // Hide background content
+            backgroundContent.style.display = 'none';
+            
+            // Load handson content if not loaded yet
+            if (!handsonLoaded) {
+                fetch('../bob_handson/competitve_Analysis_deploy/handson_lab.md')
+                    .then(response => response.text())
+                    .then(text => {
+                        handsonContent.innerHTML = marked.parse(text);
+                        
+                        // Fix image paths
+                        const images = handsonContent.querySelectorAll('img');
+                        images.forEach(img => {
+                            const src = img.getAttribute('src');
+                            if (src && !src.startsWith('http')) {
+                                img.setAttribute('src', '../bob_handson/competitve_Analysis_deploy/' + src);
+                            }
+                        });
+                        
+                        // Fix asset links
+                        const links = handsonContent.querySelectorAll('a[href^="asset/"]');
+                        links.forEach(link => {
+                            const href = link.getAttribute('href');
+                            link.setAttribute('href', '../bob_handson/competitve_Analysis_deploy/' + href);
+                        });
+                        
+                        // Add copy buttons
+                        setTimeout(() => {
+                            addCopyButtons();
+                        }, 100);
+                        
+                        handsonLoaded = true;
+                        handsonContent.style.display = 'block';
+                        handsonContent.scrollIntoView({ behavior: 'smooth' });
+                    })
+                    .catch(error => {
+                        console.error('Error loading handson lab:', error);
+                        handsonContent.innerHTML = '<p>실습 가이드를 불러오는 중 오류가 발생했습니다.</p>';
+                        handsonContent.style.display = 'block';
+                    });
+            } else {
+                handsonContent.style.display = 'block';
+                handsonContent.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
     </script>
 </body>
 </html>
