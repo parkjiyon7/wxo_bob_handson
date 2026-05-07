@@ -44,7 +44,7 @@
 
     <script src="js/main.js"></script>
     <script>
-        fetch('../wxo_handson/Agentic_Competitive_Insights/Agentic_Competitive_Insights.md')
+        fetch('content/wxo-labs/Agentic_Competitive_Insights.md')
             .then(response => response.text())
             .then(text => {
                 marked.setOptions({
@@ -61,7 +61,7 @@
                 document.querySelectorAll('img').forEach(img => {
                     const src = img.getAttribute('src');
                     if (src && !src.startsWith('http')) {
-                        img.setAttribute('src', '../wxo_handson/Agentic_Competitive_Insights/' + src);
+                        img.setAttribute('src', 'content/wxo-labs/' + src);
                     }
                 });
                 
