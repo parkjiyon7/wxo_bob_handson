@@ -227,8 +227,8 @@ body {
 
 .card-actions {
     display: flex;
-    gap: var(--spacing-sm);
-    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    flex-wrap: nowrap;
 }
 
 /* Buttons */
@@ -242,7 +242,10 @@ body {
     transition: all 0.2s ease;
     border: 2px solid transparent;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
 }
 
 .btn-primary {
