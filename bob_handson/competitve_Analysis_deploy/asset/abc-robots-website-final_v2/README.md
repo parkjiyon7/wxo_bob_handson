@@ -84,15 +84,13 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
-### 2. Access the Application
+### 2. Open the Frontend
 
-Open your web browser and navigate to:
+Open `index.html` in your web browser to access the main website.
 
-**Main Website:** `http://localhost:8000`
+Click on "Competitive Analysis" in the navigation menu to access the comparison tool.
 
-**Competitive Analysis:** `http://localhost:8000/competitive-analysis.html`
-
-The server now serves both the HTML pages and handles the API requests.
+Alternatively, you can directly open `competitive-analysis.html` in your browser.
 
 ### 3. Use the Comparison Tool
 
