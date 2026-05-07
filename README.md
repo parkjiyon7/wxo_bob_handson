@@ -68,13 +68,6 @@ watsonx Orchestrate ADK 설치 및 첫 번째 에이전트 생성
 
 **URL**: https://parkjiyon7.github.io/wxo_bob_handson/
 
-### 웹사이트 기능
-
-- 📅 **Today Info 카드**: 실습 당일 정보 (Instance URLs, API Keys, 일정)
-- 🎨 **Duolingo 스타일 디자인**: 직관적이고 친근한 UI
-- 📱 **반응형 디자인**: 모바일, 태블릿, 데스크톱 지원
-- 🔍 **마크다운 렌더링**: 실시간 마크다운 변환 및 표시
-- 📋 **코드 복사 기능**: 원클릭 코드 복사
 
 ## 📁 프로젝트 구조
 
@@ -139,48 +132,17 @@ git_jiyon_wxobob_handson/
 
 1. **Bob Lab 1**: Basic Operations - Bob 기본 기능 익히기
 2. **Bob Lab 2**: Advanced Workflows - 고급 기능 실습
-3. **Competitive Analysis Deploy**: AI 에이전트 배포 실습
-4. **watsonx Orchestrate ADK**: 에이전트 개발 기초
-5. **Agentic Competitive Insights**: 종합 프로젝트
+3. **Agentic Competitive Insights**: 종합 프로젝트
+4. **Competitive Analysis Deploy**: AI 에이전트 배포 실습
+5. **watsonx Orchestrate ADK**: 에이전트 개발 기초
+
 
 ## 📝 Today Info 업데이트 방법
 
 강사는 `Today_info.md` 파일을 수정하여 실습 당일 정보를 업데이트할 수 있습니다:
 
 ```markdown
-# 📅 오늘의 실습 정보
 
-## 🔗 Instance URLs
-- **watsonx Orchestrate URL**: `https://your-instance.watsonx.orchestrate.ibm.com`
-
-## 🔑 Credentials
-- **IBM Cloud API Key**: 강사가 제공
-- **Agent ID**: 강사가 제공
-
-## 📝 Important Notes
-- 모든 실습은 IBM watsonx SaaS 환경 기준
-```
-
-변경사항은 GitHub Pages에 자동으로 반영됩니다.
-
-## 🛠 기술 스택
-
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Markdown**: marked.js
-- **Styling**: Custom CSS (Duolingo-inspired)
-- **Hosting**: GitHub Pages
-- **Version Control**: Git
-
-## 📖 추가 리소스
-
-- [IBM Bob 공식 문서](https://ibm.biz/bob-doc)
-- [watsonx Orchestrate](https://www.ibm.com/products/watsonx-orchestrate)
-- [IBM watsonx](https://www.ibm.com/watsonx)
-- [GitHub Repository](https://github.com/parkjiyon7/wxo_bob_handson)
-
-## 🤝 기여
-
-이 프로젝트는 IBM 교육 목적으로 제작되었습니다. 개선 사항이나 버그 리포트는 이슈로 등록해주세요.
 
 ## 📄 라이선스
 
