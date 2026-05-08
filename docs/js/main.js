@@ -64,8 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function addCopyButtons() {
     const codeBlocks = document.querySelectorAll('pre code');
     codeBlocks.forEach(block => {
+        const pre = block.parentElement;
+        
         // Check if button already exists
-        if (block.parentElement.querySelector('.copy-button')) {
+        if (pre.querySelector('.copy-button')) {
             return;
         }
         
@@ -80,8 +82,15 @@ function addCopyButtons() {
                 }, 2000);
             });
         });
-        block.parentElement.style.position = 'relative';
-        block.parentElement.appendChild(button);
+        
+        pre.style.position = 'relative';
+        pre.appendChild(button);
+        
+        // Fix button position on horizontal scroll
+        pre.addEventListener('scroll', () => {
+            const scrollLeft = pre.scrollLeft;
+            button.style.transform = `translateX(-${scrollLeft}px)`;
+        });
     });
 }
 
