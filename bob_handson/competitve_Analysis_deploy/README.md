@@ -23,7 +23,7 @@
 - 사전 구축된 watsonx Orchestrate 에이전트를 server.py 파일 내에 직접 통합합니다.
 - 새로 생성된 탭에서 에이전트를 트리거하는 기능을 활성화하여 UI를 AI 에이전트에 연결합니다.
 
-![Screenshot](image/background.png)
+![Screenshot](image/background2.png)
 
 이 실습을 완료하면 (1) watsonx Orchestrate에 구축된 AI 에이전트를 배포하고 (2) Bob을 새로운 개발 동반자로 사용하는 자신감을 얻게 됩니다.
 
