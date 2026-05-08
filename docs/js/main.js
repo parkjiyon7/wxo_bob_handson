@@ -83,14 +83,8 @@ function addCopyButtons() {
             });
         });
         
-        pre.style.position = 'relative';
-        pre.appendChild(button);
-        
-        // Fix button position on horizontal scroll
-        pre.addEventListener('scroll', () => {
-            const scrollLeft = pre.scrollLeft;
-            button.style.transform = `translateX(-${scrollLeft}px)`;
-        });
+        // Insert button at the beginning of pre element for sticky positioning
+        pre.insertBefore(button, pre.firstChild);
     });
 }
 
