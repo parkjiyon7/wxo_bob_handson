@@ -66,11 +66,16 @@ function addCopyButtons() {
     codeBlocks.forEach(block => {
         const pre = block.parentElement;
         
-        // Check if button already exists
-        if (pre.querySelector('.copy-button')) {
+        // Check if wrapper already exists
+        if (pre.parentElement.classList.contains('code-block-wrapper')) {
             return;
         }
         
+        // Create wrapper
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block-wrapper';
+        
+        // Create button
         const button = document.createElement('button');
         button.className = 'copy-button';
         button.textContent = '복사';
@@ -83,8 +88,10 @@ function addCopyButtons() {
             });
         });
         
-        // Insert button at the beginning of pre element for sticky positioning
-        pre.insertBefore(button, pre.firstChild);
+        // Wrap the pre element
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+        wrapper.appendChild(button);
     });
 }
 

@@ -387,7 +387,7 @@ body {
     padding-top: 3.5rem; /* Space for copy button */
     border-radius: var(--radius-md);
     overflow-x: auto;
-    margin: var(--spacing-md) 0;
+    margin: 0; /* Margin handled by wrapper */
     position: relative;
 }
 
@@ -398,14 +398,17 @@ body {
     display: block;
 }
 
+/* Code block wrapper for fixed copy button */
+.code-block-wrapper {
+    position: relative;
+    margin: var(--spacing-md) 0;
+}
+
 /* Copy button for code blocks */
 .copy-button {
-    position: sticky;
-    float: right;
+    position: absolute;
     top: 0.5rem;
     right: 0.5rem;
-    margin-top: -2.5rem;
-    margin-right: 0.5rem;
     padding: 0.25rem 0.5rem;
     background-color: rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
@@ -419,7 +422,7 @@ body {
     opacity: 0;
 }
 
-pre:hover .copy-button {
+.code-block-wrapper:hover .copy-button {
     opacity: 1;
 }
 
