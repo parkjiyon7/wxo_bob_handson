@@ -80,7 +80,7 @@
             
             // Load background content if not loaded yet
             if (!backgroundLoaded) {
-                fetch('../wxo_handson/Agentic_Competitive_Insights/Agentic_Competitive_Insights.md')
+                fetch('../wxo_handson/Agentic_Competitive_Insights/README.md')
                     .then(response => response.text())
                     .then(text => {
                         backgroundContent.innerHTML = marked.parse(text);

@@ -80,7 +80,7 @@ git_jiyon_wxobob_handson/
 ├── bob_handson/                       # Bob 실습 자료
 │   ├── competitve_Analysis_deploy/    # AI 에이전트 배포 실습
 │   │   ├── handson_lab.md            # 실습 가이드
-│   │   ├── competitive_Analysis_deploy.md  # 개요 문서
+│   │   ├── README.md                 # 개요 문서
 │   │   ├── image/                    # 스크린샷 (image1-13.png)
 │   │   └── asset/                    # 다운로드 파일
 │   │       └── abc-robots-website-final_v2.zip
@@ -97,7 +97,7 @@ git_jiyon_wxobob_handson/
 │   │   ├── image/                    # 스크린샷
 │   │   └── agents/                   # 샘플 에이전트
 │   └── Agentic_Competitive_Insights/ # 경쟁 인텔리전스 실습
-│       ├── Agentic_Competitive_Insights.md  # 개요
+│       ├── README.md                 # 개요
 │       ├── handson_guide.md          # 실습 가이드
 │       ├── image/                    # 스크린샷 (51개)
 │       ├── Vaccum_cleaners_v2.docx   # 샘플 데이터

@@ -78,7 +78,7 @@
             
             // Load background content if not loaded yet
             if (!backgroundLoaded) {
-                fetch('../bob_handson/competitve_Analysis_deploy/competitive_Analysis_deploy.md')
+                fetch('../bob_handson/competitve_Analysis_deploy/README.md')
                     .then(response => response.text())
                     .then(text => {
                         backgroundContent.innerHTML = marked.parse(text);
