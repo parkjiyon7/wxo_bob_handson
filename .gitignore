@@ -1,9 +1,15 @@
-# Instructor files - do not commit to GitHub
+# Instructor files - do not commit to GitHub (contains API keys)
 **/instructor.md
+instructor.md
 
 # Today info files with sensitive data (API keys)
 /Today_info.md
+Today_info.md
 docs/Today_info.md
+
+# Environment files with API keys
+**/.env
+.env
 
 # macOS
 .DS_Store
