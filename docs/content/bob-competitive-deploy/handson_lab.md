@@ -44,6 +44,9 @@ instance url:
 
 ![Screenshot](image/image13.png)
 
+.env file:
+![Screenshot](image/image14.png)
+
 7. Bob 채팅에서 다음 프롬프트를 복사하여 붙여넣습니다:
 
 ```
