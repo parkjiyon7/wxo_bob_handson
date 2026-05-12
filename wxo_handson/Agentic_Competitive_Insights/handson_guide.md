@@ -480,6 +480,81 @@ Give me a summary of how this product is perceived by customers
 
 6. 맨 아래로 스크롤하여 `</body>` 태그 바로 앞에 복사한 코드를 붙여넣습니다.
 
+
+## 🔧 트러블슈팅: Embedded Agent MCP 서버 에러
+
+Embedded Agent에서 다음과 같은 에러가 발생할 수 있습니다:
+
+```
+I'm sorry, it seems I've encountered an error calling the tool: Server error '500 Internal Server Error' for url 'http://wxo-knowledge.archer-server.svc.cluster.local:8005/mcp'
+```
+
+### 원인
+
+이 에러는 Embedded Agent가 내부 클러스터 MCP 서버에 접근할 수 없어서 발생합니다:
+
+1. **네트워크 접근 제한**: Embedded Agent는 외부 웹사이트에서 실행되므로 내부 클러스터 URL(`*.svc.cluster.local`)에 직접 접근할 수 없습니다.
+2. **CORS 정책**: MCP 서버가 외부 도메인에서의 요청을 허용하지 않을 수 있습니다.
+3. **인증 문제**: Embedded Agent의 인증 토큰이 MCP 서버 접근 권한이 없을 수 있습니다.
+
+### 해결 방법
+
+#### ✅ 방법 1: Knowledge Base 설정 변경 (근본 해결)
+
+Knowledge Base가 내부 MCP 서버를 사용하고 있어서 발생하는 문제입니다. 다음 단계로 해결할 수 있습니다:
+
+**1단계: ABC Robots Agent의 Knowledge 설정 확인**
+
+1. **Manage Agents** → **ABC Robots Agent-<본인이름>** 선택
+2. **Knowledge Source** 섹션으로 이동
+3. `Vacuum_cleaners_v2` 지식 소스 옆의 점 세 개(⋮) 클릭
+4. **Edit details** 선택
+
+**2단계: Knowledge 설정 수정**
+
+1. **Edit knowledge settings** 클릭
+2. **Retrieval method**를 확인:
+   - 현재 **Dynamic**으로 설정되어 있다면, 이것이 내부 MCP 서버를 사용하는 원인입니다
+3. 다음 중 하나를 선택:
+   - **Option A**: **Static**으로 변경 (권장)
+     - Static은 외부 MCP 서버 없이 Knowledge Base만 사용
+     - **Maximum Search Results**: 10 유지
+   - **Option B**: Dynamic을 유지하되 MCP 서버 URL 확인
+     - MCP 서버가 공개 URL(`https://remote-mcp-tools...`)을 사용하는지 확인
+4. **Save** 클릭
+
+**3단계: 에이전트 재배포**
+
+1. **ABC Robots Agent** 페이지에서 **Deploy** 클릭
+2. **Pre-deployment summary**에서 **Deploy** 클릭
+3. Master Agent도 동일하게 재배포
+
+**4단계: Embedded Agent 테스트**
+
+1. 웹사이트를 새로고침
+2. Embedded Agent에서 쿼리 테스트:
+   ```
+   Give me the list of products by ABC robots
+   ```
+
+#### 방법 2: watsonx Orchestrate UI에서 테스트 (임시 해결)
+
+Embedded Agent 대신 watsonx Orchestrate UI의 Chat 기능을 사용:
+
+1. 햄버거 메뉴(☰) → **Chat** 선택
+2. 드롭다운에서 **Master Agent-<본인이름>** 선택
+3. 쿼리 실행 및 테스트
+
+이 방법은 내부 네트워크에서 실행되므로 MCP 서버에 정상적으로 접근할 수 있습니다.
+
+#### 방법 3: MCP 도구 없이 테스트
+
+**Identifier Agent**와 **Comp Analysis Agent**는 외부 MCP 서버(`https://remote-mcp-tools...`)를 사용하므로 정상 작동합니다. **ABC Robots Agent**만 Knowledge Base 설정을 Static으로 변경하면 모든 에이전트가 Embedded Agent에서 작동합니다.
+
+### 참고사항
+
+- **프로덕션 환경**에서는 MCP 서버를 외부 접근 가능한 엔드포인트로 배포하거나, API Gateway를 통해 안전하게 노출해야 합니다.
+- **개발/테스트 환경**에서는 watsonx Orchestrate UI의 Chat 기능을 사용하는 것이 가장 간단합니다.
 7. 변경 사항을 저장하고 브라우저에서 `index.html` 파일을 엽니다. 다음과 같은 화면이 표시됩니다:
 
    ![Hands-on Step 51](image/handson51.png)

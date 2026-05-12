@@ -460,7 +460,6 @@ Give me a summary of how this product is perceived by customers
 
 ![Hands-on Step 48](image/handson48.png)
 
-## 배포
 
 이제 이 채팅을 ABC Robots의 내부 웹사이트에 배포하여 ABC Robots 직원들이 경쟁 분석을 수행할 수 있도록 하겠습니다.
 
@@ -480,4 +479,6 @@ Give me a summary of how this product is perceived by customers
 
 6. 맨 아래로 스크롤하여 `</body>` 태그 바로 앞에 복사한 코드를 붙여넣습니다.
 
-7. 변경 사항을 저장하고 브라우저에서 `index.html` 파일을 엽니다. 다음과 같은 화면이 표시됩니다:
+7. 변경 사항을 저장하고 브라우저에서 index.html 파일을 엽니다. 다음과 같은 화면이 표시됩니다:
+![Hands-on Step 51](image/handson51.png)
+  -> 안될 경우, watsonx Orchstrate instance 접속 > 프로필 아이콘 클릭 > settings > Embed Security off
