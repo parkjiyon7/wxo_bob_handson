@@ -59,6 +59,11 @@
                     block.classList.add('language-plaintext');
                 });
                 
+                // Fix download links
+                if (typeof fixDownloadLinks === 'function') {
+                    fixDownloadLinks();
+                }
+                
                 // Add copy buttons to code blocks
                 if (typeof addCopyButtons === 'function') {
                     addCopyButtons();

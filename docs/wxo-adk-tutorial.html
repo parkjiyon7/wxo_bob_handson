@@ -64,6 +64,11 @@
                     }
                 });
                 
+                // Fix download links
+                if (typeof fixDownloadLinks === 'function') {
+                    fixDownloadLinks();
+                }
+                
                 document.querySelectorAll('pre code').forEach((block) => {
                     block.classList.add('language-plaintext');
                 });

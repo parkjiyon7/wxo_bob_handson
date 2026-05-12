@@ -61,6 +61,11 @@
                 const html = marked.parse(text);
                 document.getElementById('markdown-content').innerHTML = html;
                 
+                // Fix download links
+                if (typeof fixDownloadLinks === 'function') {
+                    fixDownloadLinks();
+                }
+                
                 // Add syntax highlighting class to code blocks
                 document.querySelectorAll('pre code').forEach((block) => {
                     block.classList.add('language-plaintext');

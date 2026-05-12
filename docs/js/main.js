@@ -95,6 +95,20 @@ function addCopyButtons() {
     });
 }
 
+// Function to fix download links in markdown content
+function fixDownloadLinks() {
+    document.querySelectorAll('a').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('http') && !href.startsWith('#')) {
+            if (href.endsWith('.zip') || href.endsWith('.docx') || href.endsWith('.pdf')) {
+                // Handle file downloads - make them relative to docs root
+                const fileName = href.split('/').pop();
+                link.setAttribute('href', fileName);
+            }
+        }
+    });
+}
+
 // Copy code blocks to clipboard on page load
 document.addEventListener('DOMContentLoaded', () => {
     addCopyButtons();
