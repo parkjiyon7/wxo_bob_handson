@@ -29,8 +29,7 @@
 
 ![Screenshot](image/image2.png)
 
-4. watsonx Orchestrate 인스턴스에서 **Manage Agents**로 이동한 다음 Competitive Analysis Lab의 **Master Agent**로 이동합니다.
--> Master Agent <본인이름>
+4. watsonx Orchestrate 인스턴스에서 **Manage Agents**로 이동한 다음 Competitive Analysis Lab에서 본인이 생성한 **Master Agent-<본인이름>**로 이동합니다.
 
 ![Screenshot](image/image3.png)
 
