@@ -202,7 +202,7 @@ SerpAPI를 사용하여 이러한 서비스를 호출한 다음 MCP 서버에서
 
    ![Hands-on Step 6](image/handson6.png)
 
-7. **Add MCP server**를 클릭합니다.
+7. **Manage MCP server**를 클릭합니다.
 
    ![Hands-on Step 21](image/handson21.png)
 
